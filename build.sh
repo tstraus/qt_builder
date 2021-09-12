@@ -7,8 +7,11 @@ version=`cat VERSION`
 mkdir -p build/qt-everywhere-src-${version}/build
 
 pushd build/qt-everywhere-src-${version}/build &> /dev/null
-    ../configure -prefix ../../dist -- -DBUILD_qtdoc=OFF -DFEATURE_clang=OFF -DFEATURE_clangcpp=OFF
+    ../configure -prefix /usr/local -- -DBUILD_qtdoc=OFF -DFEATURE_clang=OFF -DFEATURE_clangcpp=OFF
     cmake --build . --parallel
-    #cmake --install .
+    sudo cmake --install .
+
+    #../configure -prefix ../../dist -- -DBUILD_qtdoc=OFF -DFEATURE_clang=OFF -DFEATURE_clangcpp=OFF
+    #cmake --build . --parallel --target install
 popd &> /dev/null
 
