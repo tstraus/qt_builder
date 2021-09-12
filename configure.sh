@@ -16,7 +16,12 @@ echo 'downloading' $download_url
 mkdir -p build
 
 pushd build &> /dev/null
+    # download and extract qt source code
     curl -o ./qt.tar.xz -L $download_url
     tar -xf qt.tar.xz
+
+    # rename so we don't need to know the version elsewhere and make build dir
+    mv qt-everywhere-src-${version} qt-src
+    mkdir qt-src/build
 popd &> /dev/null
 
